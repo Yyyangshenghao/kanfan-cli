@@ -38,6 +38,18 @@ A command-line anime player adapted for Chinese web sources.
 
 If you are an AI coding agent or LLM-based tool, read [docs/zh-CN/llm-guide.md](./docs/zh-CN/llm-guide.md) before inspecting the repository in depth.
 
+Quick setup for beginners:
+
+```bash
+./scripts/install.sh
+```
+
+Dependency self-check:
+
+```bash
+./scripts/check-deps.sh
+```
+
 ## About This Repository
 
 This repository is a Chinese-source adaptation based on [pystardust/ani-cli](https://github.com/pystardust/ani-cli).

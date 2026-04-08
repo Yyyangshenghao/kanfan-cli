@@ -34,6 +34,36 @@ ani-cli
 - `yt-dlp`
 - `git`
 
+## 面向新手的推荐方式
+
+如果你只是想尽快装起来，优先尝试仓库自带脚本：
+
+### 一键安装
+
+```bash
+./scripts/install.sh
+```
+
+这个脚本会尽量：
+
+- 检测当前平台
+- 使用可识别的包管理器安装常见依赖
+- 把 `ani-cli` 复制到可执行目录
+
+### 依赖自检
+
+```bash
+./scripts/check-deps.sh
+```
+
+这个脚本会：
+
+- 检查常见依赖是否缺失
+- 输出当前平台下的安装建议命令
+- 给出推荐验证命令
+
+如果你不确定缺的是脚本、播放器还是系统依赖，先运行这个脚本最省事。
+
 ## macOS
 
 ### 推荐方式
@@ -109,31 +139,132 @@ ani-cli --source omofun111 "进击的巨人"
 
 ## Windows
 
-### 推荐理解方式
+### 推荐方案
 
-Windows 下更适合在 Git Bash、WSL 或类 Unix shell 环境里运行，而不是直接在传统 `cmd` 里运行。
+Windows 下最推荐的运行方式不是直接在 `cmd` 或原生 PowerShell 中运行，而是：
 
-### 建议准备
+- 使用 `Windows Terminal`
+- 在里面使用 `Git Bash`
+- 通过 `scoop` 安装常见依赖
 
-- `git`
-- `fzf`
-- `ffmpeg`
-- `mpv` 或 `vlc`
+这是因为当前项目本质上仍然是 shell 脚本，`Git Bash` 环境会比传统 Windows 命令行更稳定。
 
-如果你沿用原 `ani-cli` 的做法，可以参考原 README 中更完整的 Windows 说明。
+### 为什么不推荐直接用 cmd / PowerShell
 
-### 简化建议
+常见问题包括：
 
-如果你只是想先跑起来：
+- shell 行为不一致
+- 路径兼容问题
+- `fzf` 在不同终端中的交互问题
+- `bash.exe` 来源混乱导致脚本调用异常
 
-1. 安装 Git for Windows
-2. 使用 Git Bash
-3. 准备好 `fzf` 和播放器
-4. 在仓库目录中执行：
+所以对 Windows 用户来说，目标不是“在任何终端都能跑”，而是优先进入一个更接近 Unix 的终端环境。
+
+### 默认前提
+
+这部分文档默认你已经：
+
+- 安装了 `git`
+- 大概率也已经有 `Windows Terminal`
+
+如果你没有这些基础工具，再单独补装即可；这里不把它们当成主要门槛。
+
+### 真正需要额外准备的依赖
+
+在 PowerShell 中执行：
+
+```powershell
+scoop bucket add extras
+scoop install fzf ffmpeg mpv
+```
+
+如果后面需要下载相关能力，也建议装上：
+
+```powershell
+scoop install yt-dlp aria2
+```
+
+### 运行前确认
+
+重点不是“有没有 Terminal”，而是：
+
+- 请尽量在 `Windows Terminal` 中打开 `Git Bash`
+- 不要优先在原生 `cmd` 或原生 PowerShell 里直接执行 shell 脚本
+
+### 克隆仓库
+
+进入 `Git Bash` 后执行：
+
+```bash
+git clone https://github.com/Yyyangshenghao/kanfan-cli.git
+cd kanfan-cli
+chmod +x ./ani-cli
+```
+
+### 先用调试模式验证
+
+建议先不要直接播放，先验证搜索和播放链接提取：
+
+```bash
+ANI_CLI_PLAYER=debug ./ani-cli --source omofun111 -S 11 -e 1 "进击的巨人"
+```
+
+如果能输出最终 `m3u8` 或 `mp4` 地址，说明：
+
+- Git Bash 环境基本可用
+- 依赖已基本就绪
+- 搜索和解析链路基本正常
+
+### 正式运行
 
 ```bash
 ./ani-cli --source omofun111 "进击的巨人"
 ```
+
+### Windows 常见问题
+
+#### 1. 卡在搜索输入或交互异常
+
+优先确认你是不是在 `Windows Terminal + Git Bash` 中运行。
+
+不要优先使用：
+
+- 原生 `cmd`
+- 原生 PowerShell
+- Git 自带的 mintty 终端
+
+#### 2. 报找不到文件或 bash 路径不对
+
+这通常说明当前调用到的不是 Git for Windows 的 `bash.exe`，而是别的 bash 环境。
+
+最稳的做法是：
+
+- 直接在 `Git Bash` 中进入仓库目录运行 `./ani-cli`
+- 不要先折腾全局 shim
+
+#### 3. 搜索正常，但播放器打不开
+
+优先检查：
+
+- `mpv` 是否正确安装
+- 是否已经加入 Windows PATH
+- 是否存在代理与直连冲突
+
+可以先用调试模式确认是否已经拿到最终链接：
+
+```bash
+ANI_CLI_PLAYER=debug ./ani-cli --source omofun111 -S 11 -e 1 "进击的巨人"
+```
+
+### 现阶段结论
+
+对 Windows 用户来说，当前版本最稳的使用方式是：
+
+- 依赖安装走 `scoop`
+- 运行环境走 `Windows Terminal + Git Bash`
+- 项目运行使用仓库内的 `./ani-cli`
+
+这比强行让小白直接在原生 PowerShell 或 cmd 中跑 shell 脚本更靠谱。
 
 ## Android
 
@@ -167,6 +298,13 @@ chmod +x ./ani-cli
 git clone https://github.com/Yyyangshenghao/kanfan-cli.git
 cd kanfan-cli
 chmod +x ./ani-cli
+./ani-cli --source omofun111 "进击的巨人"
+```
+
+如果你不想手动复制脚本到 `PATH`，也可以在仓库根目录直接运行：
+
+```bash
+./scripts/check-deps.sh
 ./ani-cli --source omofun111 "进击的巨人"
 ```
 
