@@ -26,6 +26,8 @@ A command-line anime player adapted for Chinese web sources.
 - 播放页直链提取
 - 代理搜索、播放器直连的兼容处理
 
+中文站点适配思路与部分规则参考了 [MajoSissi/animeko-source](https://github.com/MajoSissi/animeko-source) 提供的公开订阅源与站点规则。
+
 中文文档入口：
 
 - [中文文档总览](./docs/zh-CN/README.md)
@@ -40,6 +42,8 @@ If you are an AI coding agent or LLM-based tool, read [docs/zh-CN/llm-guide.md](
 This repository is a Chinese-source adaptation based on [pystardust/ani-cli](https://github.com/pystardust/ani-cli).
 
 The original project provides the command-line interaction model, player integration and core playback flow. This repository focuses on Chinese web source adaptation, episode parsing and playback compatibility improvements.
+
+Some Chinese-source adaptation ideas and rule references were derived from the public source definitions in [MajoSissi/animeko-source](https://github.com/MajoSissi/animeko-source).
 
 This repository does not host or distribute media content. It only performs search, page parsing and playback-link adaptation for third-party sites.
 

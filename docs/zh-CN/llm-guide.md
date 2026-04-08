@@ -8,6 +8,8 @@ format: machine-oriented repository context
 - project_type: `shell-based command-line anime playback tool`
 - upstream_project: `pystardust/ani-cli`
 - upstream_url: `https://github.com/pystardust/ani-cli`
+- reference_rules_project: `MajoSissi/animeko-source`
+- reference_rules_url: `https://github.com/MajoSissi/animeko-source`
 - repository_role: `modified downstream adaptation`
 - primary_focus:
   - `Chinese web source adaptation`
