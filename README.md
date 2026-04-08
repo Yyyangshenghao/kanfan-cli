@@ -31,6 +31,7 @@ A command-line anime player adapted for Chinese web sources.
 中文文档入口：
 
 - [中文文档总览](./docs/zh-CN/README.md)
+- [安装与依赖](./docs/zh-CN/install.md)
 - [快速使用](./docs/zh-CN/usage.md)
 - [媒体源说明](./docs/zh-CN/sources.md)
 - [网络与代理说明](./docs/zh-CN/networking.md)

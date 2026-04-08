@@ -13,10 +13,11 @@
 
 如果你是第一次使用，建议按下面顺序阅读：
 
-1. [快速使用](./usage.md)
-2. [媒体源说明](./sources.md)
-3. [网络与代理说明](./networking.md)
-4. [LLM 阅读指南](./llm-guide.md)
+1. [安装与依赖](./install.md)
+2. [快速使用](./usage.md)
+3. [媒体源说明](./sources.md)
+4. [网络与代理说明](./networking.md)
+5. [LLM 阅读指南](./llm-guide.md)
 
 ## 适合谁看
 
@@ -44,6 +45,7 @@
 ## 文档导航
 
 - [快速使用](./usage.md)
+- [安装与依赖](./install.md)
 - [媒体源说明](./sources.md)
 - [网络与代理说明](./networking.md)
 - [LLM 阅读指南](./llm-guide.md)
