@@ -17,9 +17,23 @@ kanfan
 A command-line anime player adapted for Chinese web sources.
 </h3>
 
-<p align="center">
-Chinese adaptation docs: <a href="./docs/zh-CN/README.md">docs/zh-CN</a>
-</p>
+## 中文说明
+
+`kanfan-cli` 是一个源自 [pystardust/ani-cli](https://github.com/pystardust/ani-cli) 的中文站点适配版本，主要补充：
+
+- 中文源搜索
+- 分集列表解析
+- 播放页直链提取
+- 代理搜索、播放器直连的兼容处理
+
+中文文档入口：
+
+- [中文文档总览](./docs/zh-CN/README.md)
+- [快速使用](./docs/zh-CN/usage.md)
+- [媒体源说明](./docs/zh-CN/sources.md)
+- [网络与代理说明](./docs/zh-CN/networking.md)
+
+If you are an AI coding agent or LLM-based tool, read [docs/zh-CN/llm-guide.md](./docs/zh-CN/llm-guide.md) before inspecting the repository in depth.
 
 ## About This Repository
 
@@ -28,6 +42,20 @@ This repository is a Chinese-source adaptation based on [pystardust/ani-cli](htt
 The original project provides the command-line interaction model, player integration and core playback flow. This repository focuses on Chinese web source adaptation, episode parsing and playback compatibility improvements.
 
 This repository does not host or distribute media content. It only performs search, page parsing and playback-link adaptation for third-party sites.
+
+## License and Attribution
+
+This repository contains a modified version of work originally published in [pystardust/ani-cli](https://github.com/pystardust/ani-cli).
+
+The upstream project is licensed under GPL-3.0, and this repository continues to distribute the modified work under GPL-3.0. The full license text is available in [LICENSE](./LICENSE).
+
+The current modifications mainly focus on:
+
+- Chinese web source adaptation
+- episode list and playback-link extraction
+- playback compatibility improvements in mixed proxy/direct network environments
+
+This repository preserves the original license and acknowledges the upstream project and its contributors.
 
 <h1 align="center">
 	Showcase
